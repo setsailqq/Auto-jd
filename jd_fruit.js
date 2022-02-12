@@ -1,6 +1,7 @@
 /*
 东东水果:脚本更新地址 https://gitee.com/lxk0301/jd_scripts/raw/master/jd_fruit.js
 更新时间：2021-11-7
+跳过 可以兑换
 活动入口：京东APP我的-更多工具-东东农场
 东东农场活动链接：https://h5.m.jd.com/babelDiy/Zeus/3KSjXqQabiTuD1cJ28QskrpWoBKT/index.html
 已支持IOS双京东账号,Node.js支持N个京东账号
@@ -94,24 +95,24 @@ async function jdFruit() {
       console.log(`\n【已成功兑换水果】${$.farmInfo.farmUserPro.winTimes}次\n`);
       message += `【已兑换水果】${$.farmInfo.farmUserPro.winTimes}次\n`;
       await masterHelpShare();//助力好友
-      if ($.farmInfo.treeState === 2 || $.farmInfo.treeState === 3) {
-        option['open-url'] = urlSchema;
-        $.msg($.name, ``, `【京东账号${$.index}】${$.nickName || $.UserName}\n【提醒⏰】${$.farmInfo.farmUserPro.name}已可领取\n请去京东APP或微信小程序查看\n点击弹窗即达`, option);
-        if ($.isNode()) {
-          await notify.sendNotify(`${$.name} - 账号${$.index} - ${$.nickName}水果已可领取`, `【京东账号${$.index}】${$.nickName || $.UserName}\n【提醒⏰】${$.farmInfo.farmUserPro.name}已可领取\n请去京东APP或微信小程序查看`);
-        }
-        return
-      } else if ($.farmInfo.treeState === 1) {
-        console.log(`\n${$.farmInfo.farmUserPro.name}种植中...\n`)
-      } else if ($.farmInfo.treeState === 0) {
+      //if ($.farmInfo.treeState === 2 || $.farmInfo.treeState === 3) {
+        //option['open-url'] = urlSchema;
+       // $.msg($.name, ``, `【京东账号${$.index}】${$.nickName || $.UserName}\n【提醒⏰】${$.farmInfo.farmUserPro.name}已可领取\n请去京东APP或微信小程序查看\n点击弹窗即达`, option);
+       // if ($.isNode()) {
+          //await notify.sendNotify(`${$.name} - 账号${$.index} - ${$.nickName}水果已可领取`, `【京东账号${$.index}】${$.nickName || $.UserName}\n【提醒⏰】${$.farmInfo.farmUserPro.name}已可领取\n请去京东APP或微信小程序查看`);
+       // }
+       // return
+      //} else if ($.farmInfo.treeState === 1) {
+       // console.log(`\n${$.farmInfo.farmUserPro.name}种植中...\n`)
+     // } else if ($.farmInfo.treeState === 0) {
         //已下单购买, 但未开始种植新的水果
-        option['open-url'] = urlSchema;
-        $.msg($.name, ``, `【京东账号${$.index}】 ${$.nickName || $.UserName}\n【提醒⏰】您忘了种植新的水果\n请去京东APP或微信小程序选购并种植新的水果\n点击弹窗即达`, option);
-        if ($.isNode()) {
-          await notify.sendNotify(`${$.name} - 您忘了种植新的水果`, `京东账号${$.index} ${$.nickName}\n【提醒⏰】您忘了种植新的水果\n请去京东APP或微信小程序选购并种植新的水果`);
-        }
-        return
-      }
+       //option['open-url'] = urlSchema;
+        //$.msg($.name, ``, `【京东账号${$.index}】 ${$.nickName || $.UserName}\n【提醒⏰】您忘了种植新的水果\n请去京东APP或微信小程序选购并种植新的水果\n点击弹窗即达`, option);
+       // if ($.isNode()) {
+         // await notify.sendNotify(`${$.name} - 您忘了种植新的水果`, `京东账号${$.index} ${$.nickName}\n【提醒⏰】您忘了种植新的水果\n请去京东APP或微信小程序选购并种植新的水果`);
+       // }
+       // return
+     // }
       await doDailyTask();
       await doTenWater();//浇水十次
       await getFirstWaterAward();//领取首次浇水奖励
